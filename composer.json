@@ -1,0 +1,29 @@
+{
+  "name": "cba85/webstart-php-famework",
+  "description": "My personal framework",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Clément Barbaza",
+      "email": "clement.barbaza@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {
+    "nesbot/carbon": "^2.64",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "scripts": {
+    "serve": "php -S 0.0.0.0:8080 -t public"
+  },
+  "require-dev": {
+    "fakerphp/faker": "^1.21",
+    "filp/whoops": "^2.14"
+  }
+}
