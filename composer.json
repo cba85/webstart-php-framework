@@ -12,7 +12,11 @@
   "minimum-stability": "stable",
   "require": {
     "nesbot/carbon": "^2.64",
-    "vlucas/phpdotenv": "^5.5"
+    "vlucas/phpdotenv": "^5.5",
+    "league/route": "^5.1",
+    "laminas/laminas-diactoros": "^2.24",
+    "laminas/laminas-httphandlerrunner": "^2.4",
+    "twig/twig": "^3.0"
   },
   "autoload": {
     "psr-4": {
@@ -25,5 +29,8 @@
   "require-dev": {
     "fakerphp/faker": "^1.21",
     "filp/whoops": "^2.14"
+  },
+  "config": {
+    "process-timeout": 0
   }
 }

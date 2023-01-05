@@ -22,10 +22,14 @@ $ php -S 0.0.0.0:8080 -t public/
 $ composer run serve
 ```
 
-## Features
+## Dependencies
+
+See [composer.json](./composer.json) file for all dependencies
 
 * `.env` file
 * Carbon for dates
+* League route as router
+* Twig for template engine
 
 ### Dev
 
