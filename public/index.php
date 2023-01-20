@@ -21,6 +21,8 @@ $request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
 
 $router = new League\Route\Router;
 
+$router->middleware(new \App\Middlewares\MaintenanceMiddleware);
+
 $routes = require(__DIR__ . "/../routes/routes.php");
 
 $response = $router->dispatch($request);

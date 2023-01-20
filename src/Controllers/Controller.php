@@ -2,10 +2,6 @@
 
 namespace App\Controllers;
 
-use Laminas\Diactoros\Response;
-use PDO;
-use PDOException;
-
 class Controller
 {
     protected $response;
@@ -14,7 +10,7 @@ class Controller
 
     public function __construct()
     {
-        $this->response = new Response;
+        $this->response = new \Laminas\Diactoros\Response;
 
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../../views");
         $this->twig = new \Twig\Environment($loader, [
@@ -23,8 +19,8 @@ class Controller
         ]);
 
         try {
-            $this->pdo = new PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
-        } catch (PDOException $e) {
+            $this->pdo = new \PDO("mysql:host={$_ENV['DB_HOST']};dbname={$_ENV['DB_NAME']}", $_ENV['DB_USER'], $_ENV['DB_PASSWORD']);
+        } catch (\PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
