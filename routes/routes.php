@@ -8,3 +8,6 @@ $router->map('POST', '/contact', 'App\Controllers\ContactController::send');
 //$router->map('POST', '/contact', 'App\Controllers\ContactController::send')->middleware(new ContactFormValidationFailsMiddleware);
 
 $router->map('GET', '/dashboard/contact', 'App\Controllers\Dashboard\ContactController::index');
+
+$router->map('GET', '/posts', 'App\Controllers\PostController::index');
+$router->map('POST', '/posts', 'App\Controllers\PostController::store');
