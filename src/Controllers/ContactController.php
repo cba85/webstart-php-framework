@@ -9,6 +9,8 @@ class ContactController extends Controller
 {
     public function displayForm()
     {
+        /*
+        // No container
         // TODO: use a better package
         $msg = new \Plasticbrain\FlashMessages\FlashMessages;
 
@@ -16,6 +18,15 @@ class ContactController extends Controller
         $this->response->getBody()->write($html);
 
         return $this->response;
+        */
+
+        // TODO: use a better package
+        $msg = new \Plasticbrain\FlashMessages\FlashMessages;
+
+        $html = $this->container->get('twig')->render('contact.html', ['msg' => $msg]);
+        $this->container->get('response')->getBody()->write($html);
+
+        return $this->container->get('response');
     }
 
     public function send($req)
@@ -49,7 +60,13 @@ class ContactController extends Controller
         // END MIDDLEWARE
 
         // Insérer en base de données
-        $statement = $this->pdo->prepare("INSERT INTO contacts (email, subject, message) VALUES (:email, :subject, :message)");
+
+        // No container
+        //$statement = $this->pdo->prepare("INSERT INTO contacts (email, subject, message) VALUES (:email, :subject, :message)");
+
+        // Container
+        $statement = $this->container->get('pdo')->prepare("INSERT INTO contacts (email, subject, message) VALUES (:email, :subject, :message)");
+
         $statement->execute([
             'email' => $params['email'],
             'message' => $params['message'],

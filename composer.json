@@ -18,7 +18,8 @@
     "laminas/laminas-httphandlerrunner": "^2.4",
     "twig/twig": "^3.0",
     "rakit/validation": "^1.4",
-    "plasticbrain/php-flash-messages": "^1.0"
+    "plasticbrain/php-flash-messages": "^1.0",
+    "php-di/php-di": "^7.0"
   },
   "autoload": {
     "psr-4": {

@@ -10,6 +10,9 @@ class PostController extends Controller
 {
     public function index()
     {
+        /*
+        // No container
+
         $msg = new \Plasticbrain\FlashMessages\FlashMessages;
 
         $posts = (new PostRepository($this->pdo))->all();
@@ -18,6 +21,18 @@ class PostController extends Controller
         $this->response->getBody()->write($html);
 
         return $this->response;
+        */
+
+        // Container
+
+        $msg = new \Plasticbrain\FlashMessages\FlashMessages;
+
+        $posts = (new PostRepository($this->container->get('pdo')))->all();
+
+        $html = $this->container->get('twig')->render('posts.html', ['msg' => $msg, "posts" => $posts]);
+        $this->container->get('response')->getBody()->write($html);
+
+        return $this->container->get('response');
     }
 
     public function store($req)
@@ -48,7 +63,12 @@ class PostController extends Controller
         }
 
         // Insérer en base de données
-        $postRepository = new PostRepository($this->pdo);
+
+        // No container
+        //$postRepository = new PostRepository($this->pdo);
+
+        // Container
+        $postRepository = new PostRepository($this->container->get('pdo'));
 
         $post = new \App\Models\Post;
         $post->title = $params['title'];

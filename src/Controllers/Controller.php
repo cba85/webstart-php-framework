@@ -7,9 +7,16 @@ class Controller
     protected $response;
     protected $twig;
     protected $pdo;
+    protected $container;
 
-    public function __construct()
+    public function __construct(\DI\Container $container)
     {
+
+        // Container
+        $this->container = $container;
+
+        /*
+        // No container
         $this->response = new \Laminas\Diactoros\Response;
 
         $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . "/../../views");
@@ -24,5 +31,6 @@ class Controller
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }
+        */
     }
 }
